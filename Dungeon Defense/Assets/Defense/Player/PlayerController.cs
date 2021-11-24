@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 namespace Defense.Player
 {
@@ -18,6 +19,9 @@ namespace Defense.Player
         public float angularSpeed;
         private NavMeshAgent playerNav;
         private Animator playerAnimator;
+
+        [Header("Ground")] 
+        public GameObject ground;
 
         private static readonly int Walk = Animator.StringToHash("Walk");
 
