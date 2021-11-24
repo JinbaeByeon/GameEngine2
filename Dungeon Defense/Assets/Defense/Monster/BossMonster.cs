@@ -21,6 +21,7 @@ namespace Defense.Monster
         
         private Vector3 lookVec;
         private bool isAttack;
+        private bool isSkill;
         
         void Awake()
         {
@@ -31,14 +32,13 @@ namespace Defense.Monster
             _meshRenderers = GetComponentsInChildren<MeshRenderer>();
 
             isAttack = true;
+            isSkill = true;
             //StartCoroutine(Think());
         }
 
         // Update is called once per frame
         void Update()
         {
-            print(target.position.ToString());
-            
             // 플레이어를 따라가게
             Vector3 dir = target.position - transform.position;
             transform.Translate(dir.normalized * 3f * Time.deltaTime);
@@ -46,16 +46,25 @@ namespace Defense.Monster
             // 플레이어를 바라보게
             transform.LookAt(target);
 
-            float len = DistanceToPoint(target.position, transform.position);
+            float toPlayerDistance = DistanceToPoint(target.position, transform.position);
             
             // 가까워지면 공격
-            if (len < 5f)
+            if (toPlayerDistance < 5f)
             {
                 BossAttack();
+                
+                // 가까워지면 이거 초기화해서 다시 멀어지면 스킬쓰게
+                isSkill = true;
             }
             else
             {
                 isAttack = true;
+            }
+            
+            // 일정 거리 이상 멀어지면 일정 시간마다 스킬 공격
+            if (toPlayerDistance > 15f)
+            {
+                BossSkillAttack();
             }
         }
 
@@ -64,6 +73,13 @@ namespace Defense.Monster
             if (isAttack)
                 anim.SetTrigger("doAttack");
             isAttack = false;
+        }
+
+        void BossSkillAttack()
+        {
+            if (isSkill)
+                anim.SetTrigger("doSkill");
+            isSkill = false;
         }
         
         public float DistanceToPoint(Vector3 a, Vector3 b)
@@ -112,9 +128,9 @@ namespace Defense.Monster
         // IEnumerator Skill()
         // {
         //     anim.SetTrigger("doSkill");
-        //     yield return new WaitForSeconds(2.5f);
+        //     yield return new WaitForSeconds(10f);
         //  
-        //     StartCoroutine(Think());
+        //     //StartCoroutine(Think());
         // }
         //
         // IEnumerator Taunt()
