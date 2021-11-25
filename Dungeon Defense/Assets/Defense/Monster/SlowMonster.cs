@@ -30,7 +30,7 @@ namespace Monster
             }
             
             Vector3 dir = target.position - transform.position;
-            transform.Translate(dir.normalized * MoveSpeed * Time.deltaTime);
+            transform.position += dir.normalized * MoveSpeed * Time.deltaTime;
             
             if (Vector3.Distance(transform.position, target.position) <= 0.4f)
             {
@@ -52,6 +52,7 @@ namespace Monster
 
             waypointIndex = ++waypointIndex % 4;
             target = Waypoints.points[waypointIndex];
+            transform.LookAt(target);
         }
     }
 }

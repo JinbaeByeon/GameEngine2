@@ -48,15 +48,10 @@ namespace Monster
             
             Vector3 dir = target.position - transform.position;
 
-            transform.Translate(dir.normalized * MoveSpeed * Time.deltaTime);
+            // transform.Translate(dir.normalized * MoveSpeed * Time.deltaTime);
+            transform.position += dir.normalized * MoveSpeed * Time.deltaTime;
 
-            
-            
-            transform.LookAt(target);
-            
 
-            출처: https://roadrunner.tistory.com/558 [삶의 조각들]
-            
             if (Vector3.Distance(transform.position, target.position) <= 0.4f)
             {
                 GetNextWaypoint();
@@ -77,6 +72,7 @@ namespace Monster
 
             waypointIndex = ++waypointIndex % 4;
             target = Waypoints.points[waypointIndex];
+            transform.LookAt(target);
 
         }
         
