@@ -95,4 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5984dcb7943c74facd6a64c8921aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIconPrefab: {fileID: 0}
   target: {fileID: 0}
+  UICanvas: {fileID: 0}
+  chestUITransform: {fileID: 0}
+  itemDatabase: {fileID: 0}
+  Items: []
