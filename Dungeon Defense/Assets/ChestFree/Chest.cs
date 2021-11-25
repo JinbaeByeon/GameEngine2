@@ -9,7 +9,7 @@ public class Chest : MonoBehaviour
     public ItemIcon itemIconPrefab;
     public Transform target;
 
-    public GameObject UICanvas;
+    public Canvas UICanvas;
     public Transform chestUITransform;
     public ItemDatabase itemDatabase;
     public List<string> Items;
@@ -23,7 +23,7 @@ public class Chest : MonoBehaviour
 
     void Start()
     { 
-        UICanvas.SetActive(false);
+        UICanvas.gameObject.SetActive(false);
 
         var containItems = Items
             .Select(itemName => itemDatabase.ItemDatas
@@ -45,13 +45,13 @@ public class Chest : MonoBehaviour
         
         if (toPlayerDistance < 5f)
         {
-            
+            //print("가깝다");
             if (Input.GetKeyDown(KeyCode.E))
-                UICanvas.SetActive(!UICanvas.activeSelf);
+                UICanvas.gameObject.SetActive(!UICanvas.gameObject.activeSelf);
         }
         else
         {
-            //print("멀다");
+            UICanvas.gameObject.SetActive(false);
         }
     }
     

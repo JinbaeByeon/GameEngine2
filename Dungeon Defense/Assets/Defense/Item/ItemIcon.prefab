@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7948127754247275608}
   - component: {fileID: 7948127754247275611}
   - component: {fileID: 7948127754247275610}
+  - component: {fileID: -8358499041203893598}
   m_Layer: 5
   m_Name: ItemIcon
   m_TagString: Untagged
@@ -88,3 +89,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999f21e4130bef1428958c5d5ede9e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &-8358499041203893598
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7948127754247275612}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

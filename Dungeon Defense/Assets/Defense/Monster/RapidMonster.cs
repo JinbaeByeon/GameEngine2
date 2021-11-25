@@ -11,16 +11,12 @@ namespace Monster
 
         private Transform target;
         private int waypointIndex = 0;
+        private bool isTurn = true;
 
-        private float JumpPower = 30f;
-        private bool isJumping;
-    
         void Start()
         {
             print("Start 불림");
             target = Waypoints.points[0];
-
-            isJumping = false;
         }
 
 
@@ -34,23 +30,9 @@ namespace Monster
             gameObject.SetActive(false);
         }
 
-        void Jump()
-        {
-            if (!isJumping)
-            {
-                isJumping = true;
-                transform.Translate(Vector3.up * Time.deltaTime * JumpPower);
-            }
-            else
-            {
-                return;
-            }
-        }
-
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag("Land"))
-                isJumping = false;
+            
         }
 
         bool isDead()
@@ -60,22 +42,24 @@ namespace Monster
 
         void Update()
         {
-            // Jump();
-            
             //플레이어한테 잡히면 지움
             if (isDead())
                 Destroy(gameObject);
             
             Vector3 dir = target.position - transform.position;
+
             transform.Translate(dir.normalized * MoveSpeed * Time.deltaTime);
+
             
             
+            transform.LookAt(target);
+            
+
+            출처: https://roadrunner.tistory.com/558 [삶의 조각들]
             
             if (Vector3.Distance(transform.position, target.position) <= 0.4f)
             {
-                
                 GetNextWaypoint();
-                //transform.LookAt(target);
             }
         }
 
@@ -90,12 +74,10 @@ namespace Monster
                 target = Waypoints.points[0];
                 return;
             }
-            
-            
+
             waypointIndex = ++waypointIndex % 4;
             target = Waypoints.points[waypointIndex];
-            
-            
+
         }
         
     }
