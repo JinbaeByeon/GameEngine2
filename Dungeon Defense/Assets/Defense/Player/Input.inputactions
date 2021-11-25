@@ -1,0 +1,150 @@
+{
+    "name": "Input",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "6309d6b1-9a0a-4e23-ae3b-8547d0b026d7",
+            "actions": [
+                {
+                    "name": "Axis",
+                    "type": "Button",
+                    "id": "e79ae4b4-0031-4778-83a8-f0ac53dd8caf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Scroll",
+                    "type": "PassThrough",
+                    "id": "f0525e33-cb59-4463-9c65-e0069e576fff",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press,Hold"
+                },
+                {
+                    "name": "q Attack",
+                    "type": "Button",
+                    "id": "75b8343c-d9ed-4f4c-857f-a3b58f788229",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press,Hold"
+                },
+                {
+                    "name": "w Attack",
+                    "type": "Button",
+                    "id": "2e156657-ad17-45a8-bce3-8d92e40fe516",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press,Hold"
+                },
+                {
+                    "name": "e Attack",
+                    "type": "Button",
+                    "id": "069773e9-100d-4b3c-9547-02673cbd0710",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press,Hold"
+                },
+                {
+                    "name": "Move",
+                    "type": "PassThrough",
+                    "id": "9f88cbec-c78a-4b38-98f7-f0a6aa9bb034",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "Press,Hold"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "AxisLog",
+                    "id": "a4706252-66c9-4330-a5c8-5a669668d5f7",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Axis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "403df9b4-76d9-4005-97c1-8bd99eba3b02",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "013a77d1-e1c8-4ed0-94b5-adcb855e1370",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "27e45c92-894e-41ef-8bf1-4d2b95e1890b",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b63ad0ac-815a-43ed-b7b5-5d850c21ef6f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "q Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "794f5b7e-4d22-4234-884d-55bb5b3e86f3",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "w Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ebeb7a96-dd44-43e5-bd27-47a7e21eaf47",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "e Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13385984-e653-4228-86d8-d3d3b98f96a2",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
