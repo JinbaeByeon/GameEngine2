@@ -7,7 +7,7 @@ namespace Monster
 {
     public class RapidMonster : MonoBehaviour
     {
-        private float MoveSpeed = 10f;
+        private float MoveSpeed = 5f;
 
         private Transform target;
         private int waypointIndex = 0;
@@ -69,9 +69,13 @@ namespace Monster
             Vector3 dir = target.position - transform.position;
             transform.Translate(dir.normalized * MoveSpeed * Time.deltaTime);
             
+            
+            
             if (Vector3.Distance(transform.position, target.position) <= 0.4f)
             {
+                
                 GetNextWaypoint();
+                //transform.LookAt(target);
             }
         }
 
@@ -86,9 +90,13 @@ namespace Monster
                 target = Waypoints.points[0];
                 return;
             }
-
+            
+            
             waypointIndex = ++waypointIndex % 4;
             target = Waypoints.points[waypointIndex];
+            
+            
         }
+        
     }
 }

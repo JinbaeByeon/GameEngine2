@@ -45,7 +45,7 @@ namespace Defense.Player
                 if (hit.transform.gameObject.CompareTag("Land"))
                 {
                     playerNav.SetDestination(hit.point);
-                    print(player.transform.position.ToString());
+                    //print(player.transform.position.ToString());
                 }
             }
         }

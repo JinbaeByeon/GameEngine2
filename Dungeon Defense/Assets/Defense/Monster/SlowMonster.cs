@@ -5,7 +5,7 @@ namespace Monster
 {
     public class SlowMonster : MonoBehaviour
     {
-        private float MoveSpeed = 5f;
+        private float MoveSpeed = 3f;
 
         private Transform target;
         private int waypointIndex = 0;
