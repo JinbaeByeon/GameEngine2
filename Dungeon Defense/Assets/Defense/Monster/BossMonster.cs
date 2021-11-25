@@ -37,7 +37,7 @@ namespace Defense.Monster
         // Update is called once per frame
         void Update()
         {
-            print(target.position.ToString());
+            // print(target.position.ToString());
             
             // 플레이어를 따라가게
             Vector3 dir = target.position - transform.position;

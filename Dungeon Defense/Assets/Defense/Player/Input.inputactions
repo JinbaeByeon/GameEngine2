@@ -22,12 +22,20 @@
                     "interactions": "Press,Hold"
                 },
                 {
-                    "name": "q Attack",
-                    "type": "Button",
+                    "name": "Attack",
+                    "type": "PassThrough",
                     "id": "75b8343c-d9ed-4f4c-857f-a3b58f788229",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press,Hold"
+                    "interactions": "Press(behavior=2),Hold"
+                },
+                {
+                    "name": "Move",
+                    "type": "PassThrough",
+                    "id": "9f88cbec-c78a-4b38-98f7-f0a6aa9bb034",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2),Hold"
                 },
                 {
                     "name": "w Attack",
@@ -42,14 +50,6 @@
                     "type": "Button",
                     "id": "069773e9-100d-4b3c-9547-02673cbd0710",
                     "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press,Hold"
-                },
-                {
-                    "name": "Move",
-                    "type": "PassThrough",
-                    "id": "9f88cbec-c78a-4b38-98f7-f0a6aa9bb034",
-                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "Press,Hold"
                 }
@@ -102,11 +102,11 @@
                 {
                     "name": "",
                     "id": "b63ad0ac-815a-43ed-b7b5-5d850c21ef6f",
-                    "path": "",
-                    "interactions": "",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=2),Hold",
                     "processors": "",
                     "groups": "",
-                    "action": "q Attack",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -136,7 +136,7 @@
                     "name": "",
                     "id": "13385984-e653-4228-86d8-d3d3b98f96a2",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "Press",
+                    "interactions": "Press(behavior=2),Hold",
                     "processors": "",
                     "groups": "",
                     "action": "Move",

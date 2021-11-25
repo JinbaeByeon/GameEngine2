@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -21,6 +22,10 @@ namespace Defense.Player
         public float angularSpeed;
         private NavMeshAgent playerNav;
         private Animator playerAnimator;
+        public GameObject weapon;
+        public GameObject hand;
+        private List<GameObject> bullets;
+        private float attackTime =0;
 
         [Header("Ground")] 
         public GameObject ground;
@@ -29,7 +34,8 @@ namespace Defense.Player
         public GameObject tGround;
         public GameObject bGround;
 
-        private static readonly int Walk = Animator.StringToHash("Walk");
+        private static readonly int walk = Animator.StringToHash("walk");
+        private static readonly int attack = Animator.StringToHash("attack");
         private CharacterController _characterController;
 
 
@@ -40,36 +46,22 @@ namespace Defense.Player
             playerNav.angularSpeed = angularSpeed;
             playerAnimator = player.GetComponent<Animator>();
             _characterController = GetComponent<CharacterController>();
+            bullets = new List<GameObject>();
         }
-
-        public void OnPointerDown()
-        {
-            // if(Input.GetMouseButtonDown(0)) return;
-            // Ray ray = cam.ScreenPointToRay(eventData.position);
-            // Physics.Raycast(ray, out hit);
-            //
-            //
-            // if (null != hit.transform)
-            // {
-            //     clickEffect.SetActive(false);
-            //     clickEffect.transform.position = hit.point;
-            //     clickEffect.SetActive(true);
-            //
-            //     if (hit.transform.gameObject.CompareTag("Land"))
-            //     {
-            //         playerNav.SetDestination(hit.point);
-            //         print(player.transform.position.ToString());
-            //     }
-            // }
-        }
-
         private void Update()
         {
-            playerAnimator.SetBool(Walk, playerNav.velocity != Vector3.zero);
+            playerAnimator.SetBool(walk, playerNav.velocity != Vector3.zero);
             
             var position = player.transform.position;
             cam.transform.position = position + cameraOffset * zoom;
             cam.transform.LookAt(position);
+
+            foreach (var bullet in bullets)
+            {
+                Vector3 v = bullet.transform.forward;
+                print("bullet - " + v.ToString());
+                bullet.transform.position += 5 * v * Time.deltaTime;
+            }
         }
 
         public void Zoom(InputAction.CallbackContext ctx)
@@ -86,7 +78,7 @@ namespace Defense.Player
         {
             Mouse mouse = Mouse.current;
             Vector2 position = mouse.position.ReadValue();
-            print("포지션: " +position);
+            
             Ray ray = cam.ScreenPointToRay(position);
             Physics.Raycast(ray, out hit);
             
@@ -100,7 +92,40 @@ namespace Defense.Player
                 if (hit.transform.gameObject.CompareTag("Land"))
                 {
                     playerNav.SetDestination(hit.point);
-                    print(player.transform.position.ToString());
+                    // print(player.transform.position.ToString());
+                }
+            }
+        }
+
+        public void Attack(InputAction.CallbackContext ctx)
+        {   
+            Mouse mouse = Mouse.current;
+            Vector2 position = mouse.position.ReadValue();
+            
+            Ray ray = cam.ScreenPointToRay(position);
+            Physics.Raycast(ray, out hit);
+
+            if (null != hit.transform)
+            {
+                if (hit.transform.gameObject.CompareTag("Land"))
+                {
+                    Vector3 lookAt = hit.point;
+                    lookAt.y = player.transform.position.y;
+                    player.transform.LookAt(lookAt);
+                    
+                    playerAnimator.SetBool(walk, false);
+                    playerAnimator.SetTrigger(attack);
+                    if (weapon.name == "Stone")
+                    {
+                        GameObject stone = Instantiate(weapon);
+                        stone.transform.position = hand.transform.position;
+                        lookAt.y = stone.transform.position.y;
+                        print("player - " + player.transform.forward.ToString());
+
+                        stone.transform.forward = player.transform.forward;
+                        bullets.Add(stone);
+                    }
+                    playerNav.SetDestination(player.transform.position);
                 }
             }
         }
