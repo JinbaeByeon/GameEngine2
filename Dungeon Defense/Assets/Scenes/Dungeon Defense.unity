@@ -213,6 +213,8 @@ MonoBehaviour:
   player: {fileID: 1646614665}
   moveSpeed: 5
   angularSpeed: 200
+  weapon: {fileID: 3855905513458883687, guid: 41646bdb70d49e248a2ac5ab101eb4eb, type: 3}
+  hand: {fileID: 134055030}
   ground: {fileID: 1182770810}
   lGround: {fileID: 0}
   rGround: {fileID: 0}
@@ -388,6 +390,11 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!1 &134055030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 199677974501643460, guid: f4502207b526eef4aab409aa4030f211, type: 3}
+  m_PrefabInstance: {fileID: 1463934482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &134055031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5764316522323783143, guid: f4502207b526eef4aab409aa4030f211, type: 3}
