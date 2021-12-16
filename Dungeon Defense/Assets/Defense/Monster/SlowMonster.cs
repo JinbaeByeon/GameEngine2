@@ -26,11 +26,16 @@ namespace Monster
             if (isDead())
             {
                 gameObject.SetActive(false);
-                // Destroy(gameObject);   
+                
+                // 몬스터가 죽으면 카운터 추가
+                MonsterCount.MonsterCnt += 1; 
             }
-            
+
             Vector3 dir = target.position - transform.position;
-            transform.Translate(dir.normalized * MoveSpeed * Time.deltaTime);
+            
+            transform.position += dir.normalized * MoveSpeed * Time.deltaTime;
+            
+            transform.LookAt(target);
             
             if (Vector3.Distance(transform.position, target.position) <= 0.4f)
             {

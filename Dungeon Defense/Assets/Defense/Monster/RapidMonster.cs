@@ -18,22 +18,7 @@ namespace Monster
             print("Start 불림");
             target = Waypoints.points[0];
         }
-
-
-        private void OnEnable()
-        {
-            //Invoke("Dead", 3);
-        }
-
-        void Dead()
-        {
-            gameObject.SetActive(false);
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            
-        }
+        
 
         bool isDead()
         {
@@ -44,18 +29,20 @@ namespace Monster
         {
             //플레이어한테 잡히면 지움
             if (isDead())
-                Destroy(gameObject);
-            
+            {
+                //Destroy(gameObject);
+                // 몬스터가 죽으면 카운터 추가
+                MonsterCount.MonsterCnt += 1;
+            }
+
             Vector3 dir = target.position - transform.position;
 
-            transform.Translate(dir.normalized * MoveSpeed * Time.deltaTime);
+            transform.position += dir.normalized * MoveSpeed * Time.deltaTime;
 
             
             
             transform.LookAt(target);
             
-
-            출처: https://roadrunner.tistory.com/558 [삶의 조각들]
             
             if (Vector3.Distance(transform.position, target.position) <= 0.4f)
             {
