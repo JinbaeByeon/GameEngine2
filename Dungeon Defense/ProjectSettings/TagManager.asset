@@ -7,6 +7,10 @@ TagManager:
   - Land
   - Boss
   - BossBullet
+  - Monster
+  - Rapid Monster
+  - Slow Monster
+  - Bullet
   layers:
   - Default
   - TransparentFX

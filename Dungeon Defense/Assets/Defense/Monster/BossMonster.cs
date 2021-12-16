@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = System.Random;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 namespace Defense.Monster
 {
@@ -18,10 +19,18 @@ namespace Defense.Monster
         public MeshRenderer[] _meshRenderers;
 
         public Transform target;
-        
+
+        public Slider HpBar;
+        public int curHp;
+        public int maxHp;
         private Vector3 lookVec;
         private bool isAttack;
-        
+
+        private void Start()
+        {
+            gameObject.SetActive(false);
+        }
+
         void Awake()
         {
             rigid = GetComponent<Rigidbody>();
@@ -33,11 +42,18 @@ namespace Defense.Monster
             isAttack = true;
             //StartCoroutine(Think());
         }
-
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag($"Bullet"))
+            {
+                curHp -= 10;
+            }
+        }
         // Update is called once per frame
         void Update()
         {
-            // print(target.position.ToString());
+            HpBar.transform.position = gameObject.transform.position;
+            HpBar.value = (float)curHp / maxHp;
             
             // 플레이어를 따라가게
             Vector3 dir = target.position - transform.position;

@@ -14,6 +14,9 @@ public class Chest : MonoBehaviour
     public ItemDatabase itemDatabase;
     public List<string> Items;
 
+    public GameObject player;
+    private static readonly int shop = Animator.StringToHash("shop");
+
     private ItemSlot[] _itemSlots;
 
     private void Awake()
@@ -48,6 +51,16 @@ public class Chest : MonoBehaviour
             //print("가깝다");
             if (Input.GetKeyDown(KeyCode.E))
                 UICanvas.gameObject.SetActive(!UICanvas.gameObject.activeSelf);
+            
+            Animator playerAnimator = player.GetComponent<Animator>();
+            if (UICanvas.gameObject.activeSelf == true)
+            {
+                playerAnimator.SetBool(shop,true);
+            }
+            else
+            {
+                playerAnimator.SetBool(shop,false);
+            }
         }
         else
         {

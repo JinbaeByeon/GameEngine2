@@ -36,6 +36,7 @@ namespace Defense.Player
 
         private static readonly int walk = Animator.StringToHash("walk");
         private static readonly int attack = Animator.StringToHash("attack");
+        private static readonly int shop = Animator.StringToHash("shop");
         private CharacterController _characterController;
 
 
@@ -98,7 +99,9 @@ namespace Defense.Player
         }
 
         public void Attack(InputAction.CallbackContext ctx)
-        {   
+        {
+            if (playerAnimator.GetBool(shop) == true)
+                return;
             Mouse mouse = Mouse.current;
             Vector2 position = mouse.position.ReadValue();
             

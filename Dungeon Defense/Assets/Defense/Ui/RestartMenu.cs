@@ -3,22 +3,22 @@ using UnityEngine;
 
 namespace Defense.Ui
 {
-    public class PauseMenu : MonoBehaviour
+    public class RestartMenu : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()
         {
-            EventManager.Instance.On("onGameStart",OnGameStarted);
-            EventManager.Instance.On("onGamePaused",OnGamePaused);
-        
+            gameObject.SetActive(false);
+            EventManager.Instance.On("onGameReStart",OnGameReStart);
+            EventManager.Instance.On("onGameEnd",OnGameEnd);
         }
 
-        void OnGameStarted(object param)
+        void OnGameReStart(object param)
         {
             gameObject.SetActive(false);
         }
 
-        void OnGamePaused(object param)
+        void OnGameEnd(object param)
         {
             gameObject.SetActive(true);
         }

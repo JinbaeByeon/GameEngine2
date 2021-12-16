@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Defense.Manager
@@ -19,6 +20,7 @@ namespace Defense.Manager
         public List<PrefabObjectKeyValuePair> managedPrefabs;
 
         private Dictionary<string, List<GameObject>> _objectPool;
+
         
         private void Awake()
         {
@@ -47,6 +49,7 @@ namespace Defense.Manager
             {
                 founded = Instantiate(foundedPrefabData.prefab);
                 _objectPool[spawnObjectName].Add(founded);
+                HpBarManager.Instance.Add(founded);
             }
 
             
